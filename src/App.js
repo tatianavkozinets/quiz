@@ -103,7 +103,7 @@ function App() {
       return;
     }
 
-    answers.push(answer); //не правильно, состояние не изменяется вручную
+    answers.push(answer);
     // setAnswers([...answers, answer]);
     dispatch({ type: setAnswers, answers: answers });
     dispatch({ type: setCurrentAnswer, currentAnswer: "" });
