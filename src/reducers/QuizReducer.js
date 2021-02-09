@@ -1,50 +1,30 @@
 import {
-  resetQuiz,
+  resetData,
   setAnswers,
   setCurrentAnswer,
   setCurrentQuestion,
-  setError,
-  setShowResults
+  setError
 } from "./types";
 
-const QuizReducer = (state, action) => {
+export const init = initialData => {
+  return { ...initialData };
+};
+
+function QuizReducer(state, action) {
   switch (action.type) {
-    case setCurrentQuestion:
-      return {
-        ...state,
-        currentQuestion: action.currentQuestion
-      };
     case setCurrentAnswer:
-      return {
-        ...state,
-        currentAnswer: action.currentAnswer
-      };
+      return { ...state, currentAnswer: action.payload };
+    case setCurrentQuestion:
+      return { ...state, currentQuestion: action.payload };
     case setAnswers:
-      return {
-        ...state,
-        answers: action.answers
-      };
-    case setShowResults:
-      return {
-        ...state,
-        showResults: action.showResults
-      };
+      return { ...state, answers: action.payload };
     case setError:
-      return {
-        ...state,
-        error: action.error
-      };
-    case resetQuiz:
-      return {
-        ...state,
-        answers: [],
-        currentAnswer: "",
-        currentQuestion: 0,
-        showResults: false
-      };
+      return { ...state, error: action.payload };
+    case resetData:
+      return init(action.payload);
     default:
       return state;
   }
-};
+}
 
 export default QuizReducer;
