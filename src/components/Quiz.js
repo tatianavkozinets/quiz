@@ -131,7 +131,6 @@ const Quiz = () => {
 
   return (
     <div className="ui container">
-<h1>Language</h1>
       {currentQuestion < questions.length ? showQuestions() : showResults()}
     </div>
   );
