@@ -13,21 +13,13 @@ import { LgContext } from "../contexts/LanguageContext";
 import { QAContext } from "../contexts/DataContext";
 
 const ShowContent = () => {
-  const { language } = useContext(LgContext);
+  const { languageText } = useContext(LgContext);
   const { questions, state, dispatch } = useContext(QAContext);
   const { currentQuestion, currentAnswer, answers, error } = state;
-  let nextButtonText, errorText, titleText;
-
-  if (language === "en") {
-    nextButtonText = "Next";
-    errorText = "Please select answer";
-    titleText = `Question ${currentQuestion + 1} of ${questions.length}`;
-  }
-  if (language === "ru") {
-    nextButtonText = "Дальше";
-    errorText = "Пожалуйста, выбирите ответ";
-    titleText = ` Вопрос ${currentQuestion + 1} из ${questions.length}`;
-  }
+  const { nextButtonText, errorText, questionsTitleText } = languageText;
+  const titleText = `${questionsTitleText.text1} ${currentQuestion + 1} ${
+    questionsTitleText.text2
+  } ${questions.length}`;
 
   const onSelectedAnswer = answer => {
     dispatch({ type: setCurrentAnswer, payload: answer });

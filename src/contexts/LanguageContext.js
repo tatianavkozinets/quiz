@@ -1,9 +1,9 @@
 import { useState, createContext } from "react";
-
+import { en, ru } from "../const/languages";
 export const LgContext = createContext();
 
 const LanguageContext = prop => {
-  const [language, setLanguage] = useState("english");
+  const [language, setLanguage] = useState("en");
 
   const onChangeLanguage = language => {
     setLanguage(language);
@@ -12,7 +12,7 @@ const LanguageContext = prop => {
   return (
     <LgContext.Provider
       value={{
-        language: language,
+        languageText: language === "en" ? en : ru,
         onChangeLanguage: onChangeLanguage
       }}
     >

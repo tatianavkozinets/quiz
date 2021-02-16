@@ -3,7 +3,8 @@ import { LgContext } from "../contexts/LanguageContext";
 
 const LanguageSelector = () => {
   const langContext = useContext(LgContext);
-  let { language, onChangeLanguage } = langContext;
+  const { languageText, onChangeLanguage } = langContext;
+  const language = languageText.language;
   return (
     <div>
       <i
