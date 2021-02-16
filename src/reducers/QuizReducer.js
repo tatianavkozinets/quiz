@@ -5,6 +5,7 @@ import {
   setCurrentQuestion,
   setError
 } from "./types";
+import PropTypes from "prop-types";
 
 export const init = initialData => {
   return { ...initialData };
@@ -26,5 +27,15 @@ function QuizReducer(state, action) {
       return state;
   }
 }
+
+QuizReducer.propTypes = {
+  state: PropTypes.shape({
+    currentQuestion: PropTypes.number,
+    currentAnswer: PropTypes.bool,
+    answers: PropTypes.array,
+    error: PropTypes.bool
+  }),
+  action: PropTypes.func
+};
 
 export default QuizReducer;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Answer = ({ number, answer, onSelectedAnswer, active }) => {
   return (
@@ -13,6 +14,13 @@ const Answer = ({ number, answer, onSelectedAnswer, active }) => {
       </div>
     </>
   );
+};
+
+Answer.propTypes = {
+  number: PropTypes.number,
+  answer: PropTypes.number,
+  onSelectedAnswer: PropTypes.func,
+  active: PropTypes.bool
 };
 
 export default Answer;
